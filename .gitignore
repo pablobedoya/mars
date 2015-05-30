@@ -1,0 +1,4 @@
+*.class
+.metadata
+target/
+/bin/
