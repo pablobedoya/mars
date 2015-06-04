@@ -26,40 +26,46 @@ public class Agendamento {
 	public long getAgendamento() {
 		return agendamento;
 	}
+	
 	public void setAgendamento(long agendamento) {
 		this.agendamento = agendamento;
 	}
+	
 	public Especialista getEspecialista() {
 		return especialista;
 	}
 	public void setEspecialista(Especialista especialista) {
 		this.especialista = especialista;
 	}
+	
 	public Date getData() {
 		return data;
 	}
 	public void setData(Date data) {
 		this.data = data;
 	}
+	
 	public Time getHorario() {
 		return horario;
 	}
 	public void setHorario(Time horario) {
 		this.horario = horario;
 	}
+	
 	public String getTipo() {
 		return tipo;
 	}
+	
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
 	public String getObservacao() {
 		return observacao;
-	}
+	}	
+	
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-	
-	
 
 }
