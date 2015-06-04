@@ -1,20 +1,22 @@
 package org.pirateatbay.mars.model;
-import java.sql.Time;
-import java.util.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
+@IdClass(IdPartComposto.class)
 public class Participante {	
-
+	
+	@Id
 	@ManyToOne
 	@JoinColumn(name="id_agendamento")
 	private Agendamento agendamento;
 	
+	@Id
 	@OneToOne
 	@JoinColumn(name="id_discente")
 	private Discente discente;

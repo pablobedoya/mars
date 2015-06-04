@@ -43,6 +43,7 @@ public class Atendimento {
 	public void setDiscente(Discente discente) {
 		this.discente = discente;
 	}
+	
 	public Especialista getEspecialista() {
 		return especialista;
 	}
@@ -54,6 +55,7 @@ public class Atendimento {
 	public Date getData() {
 		return data;
 	}
+	
 	public void setData(Date data) {
 		this.data = data;
 	}
@@ -61,6 +63,7 @@ public class Atendimento {
 	public Time getHorario() {
 		return horario;
 	}
+	
 	public void setHorario(Time horario) {
 		this.horario = horario;
 	}
@@ -72,6 +75,7 @@ public class Atendimento {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
+	
 	public String getObservacao() {
 		return observacao;
 	}
