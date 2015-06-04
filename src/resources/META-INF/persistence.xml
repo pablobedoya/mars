@@ -9,6 +9,7 @@
 		<class>org.pirateatbay.mars.model.Discente</class>
 		<class>org.pirateatbay.mars.model.EnderecoPessoa</class>
 		<class>org.pirateatbay.mars.model.Especialista</class>
+		<class>org.pirateatbay.mars.model.Participante</class>
 		<class>org.pirateatbay.mars.model.Pessoa</class>
 		<class>org.pirateatbay.mars.model.Polo</class>
 		<class>org.pirateatbay.mars.model.Usuario</class>

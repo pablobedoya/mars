@@ -34,6 +34,7 @@ public class Agendamento {
 	public Especialista getEspecialista() {
 		return especialista;
 	}
+	
 	public void setEspecialista(Especialista especialista) {
 		this.especialista = especialista;
 	}
@@ -41,6 +42,7 @@ public class Agendamento {
 	public Date getData() {
 		return data;
 	}
+	
 	public void setData(Date data) {
 		this.data = data;
 	}
@@ -48,6 +50,7 @@ public class Agendamento {
 	public Time getHorario() {
 		return horario;
 	}
+	
 	public void setHorario(Time horario) {
 		this.horario = horario;
 	}
