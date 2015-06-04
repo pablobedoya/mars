@@ -15,6 +15,10 @@ public class Pessoa {
 	@GeneratedValue
 	private long idPessoa;
 	
+	@OneToOne
+	@JoinColumn(name="login")
+	private Usuario usuario;
+	
 	private String matricula;
 	private String nome;
 	private String CPF;
@@ -24,10 +28,6 @@ public class Pessoa {
 	private Date dataNascimento;
 	private String email;
 	private String telefone;
-	
-	@OneToOne
-	@JoinColumn(name="login")
-	private Usuario usuario;
 
 	public long getIdPessoa() {
 		return idPessoa;
@@ -35,6 +35,14 @@ public class Pessoa {
 
 	public void setIdPessoa(long idPessoa) {
 		this.idPessoa = idPessoa;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getMatricula() {
@@ -107,14 +115,6 @@ public class Pessoa {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 }

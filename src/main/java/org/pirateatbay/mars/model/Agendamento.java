@@ -1,5 +1,4 @@
 package org.pirateatbay.mars.model;
-import java.sql.Time;
 import java.util.*;
 
 import javax.persistence.Entity;
@@ -11,26 +10,25 @@ import javax.persistence.ManyToOne;
 public class Agendamento {
 	
 	@Id
-	private long agendamento;
+	private long idAgendamento;
 	
 	@ManyToOne
 	@JoinColumn(name="id_especialista")
 	private Especialista especialista;
 	
 	private Date data;
-	private Time horario;
+	private String horario;
 	private String tipo;
 	private String observacao;
 	
-	
-	public long getAgendamento() {
-		return agendamento;
+	public long getIdAgendamento() {
+		return idAgendamento;
 	}
-	
-	public void setAgendamento(long agendamento) {
-		this.agendamento = agendamento;
+
+	public void setIdAgendamento(long idAgendamento) {
+		this.idAgendamento = idAgendamento;
 	}
-	
+
 	public Especialista getEspecialista() {
 		return especialista;
 	}
@@ -47,11 +45,11 @@ public class Agendamento {
 		this.data = data;
 	}
 	
-	public Time getHorario() {
+	public String getHorario() {
 		return horario;
 	}
 	
-	public void setHorario(Time horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 	

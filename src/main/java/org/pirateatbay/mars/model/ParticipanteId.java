@@ -2,15 +2,14 @@ package org.pirateatbay.mars.model;
 
 import java.io.Serializable;
 
-public class IdPartComposto implements Serializable{
+public class ParticipanteId implements Serializable {
  
     private static final long serialVersionUID = 1L;
  
     private long agendamento;
     private long discente;
     
-    public IdPartComposto(){
-    	
+    public ParticipanteId(){
     }
  
     public long getAgendamento() {
@@ -40,9 +39,9 @@ public class IdPartComposto implements Serializable{
  
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof IdPartComposto){
-            IdPartComposto idPartComposto = (IdPartComposto) obj;
-            return idPartComposto.discente == discente && idPartComposto.agendamento == agendamento;
+        if(obj instanceof ParticipanteId){
+            ParticipanteId participanteId = (ParticipanteId) obj;
+            return participanteId.discente == discente && participanteId.agendamento == agendamento;
         }
  
         return false;

@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-@IdClass(IdPartComposto.class)
+@IdClass(ParticipanteId.class)
 public class Participante {	
 	
 	@Id
