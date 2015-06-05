@@ -15,37 +15,37 @@ public class PessoaBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private Pessoa pessoa = new Pessoa();
 	private PessoaDao pessoaDao = new PessoaDao();
 	
-	public void createPessoa(Pessoa pessoa) {
-		pessoaDao.save(pessoa);
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 	
-	public Pessoa findPessoa(long idPessoa) {
-		Pessoa pessoa = pessoaDao.find(idPessoa);
-		return pessoa;
+	public Pessoa findPessoa() {
+		Pessoa p = pessoaDao.find(pessoa.getIdPessoa());
+		return p;
 	}
 	
 	public List<Pessoa> findAll() {
 		List<Pessoa> pessoas = pessoaDao.findAll();
 		return pessoas;
 	}
+
+	public void createPessoa() {
+		pessoaDao.save(pessoa);
+	}
 	
-	public void updatePessoa(Pessoa pessoa) {
+	public void updatePessoa() {
 		Pessoa p = pessoaDao.find(pessoa.getIdPessoa());
-		p.setMatricula(pessoa.getMatricula());
-		p.setNome(pessoa.getNome());
-		p.setCpf(pessoa.getCpf());
-		p.setRg(pessoa.getRg());
-		p.setPassaporte(pessoa.getPassaporte());
-		p.setNacionalidade(pessoa.getNacionalidade());
-		p.setDataNascimento(pessoa.getDataNascimento());
-		p.setEmail(pessoa.getEmail());
-		p.setTelefone(pessoa.getTelefone());
 		pessoaDao.update(p);
 	}
 	
-	public void deletePessoa(Pessoa pessoa) {
+	public void deletePessoa() {
 		Pessoa p = pessoaDao.find(pessoa.getIdPessoa());
 		pessoaDao.delete(p);
 	}

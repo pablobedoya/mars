@@ -23,7 +23,7 @@ public class Pessoa {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "login")
-	private Usuario usuario;
+	private Usuario usuario = new Usuario();
 
 	private String matricula;
 	private String nome;
