@@ -1,5 +1,6 @@
 package org.pirateatbay.mars.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,10 +15,12 @@ public class Especialista {
 
 	@MapsId
 	@OneToOne
-	@JoinColumn(name = "id_pessoa")
+	@JoinColumn(name = "id_especialista")
 	private Pessoa pessoa;
 
 	private String area;
+	
+	@Column(name = "numero_conselho")
 	private String numeroConselho;
 
 	public long getIdEspecialista() {

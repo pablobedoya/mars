@@ -15,7 +15,7 @@ public class Discente {
 
 	@MapsId
 	@OneToOne
-	@JoinColumn(name = "id_pessoa")
+	@JoinColumn(name = "id_discente")
 	private Pessoa pessoa;
 
 	@ManyToOne

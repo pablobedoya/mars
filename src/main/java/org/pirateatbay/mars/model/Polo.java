@@ -1,19 +1,24 @@
 package org.pirateatbay.mars.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Polo {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_polo")
 	private long idPolo;
 	
 	private String nome;
 	private String cidade;
-	private String estado;
+	
+	@Column(name = "unidade_federativa")
+	private String unidadeFederativa;
 
 	public long getIdPolo() {
 		return idPolo;
@@ -39,12 +44,12 @@ public class Polo {
 		this.cidade = cidade;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getUnidadeFederativa() {
+		return unidadeFederativa;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setUnidadeFederativa(String unidadeFederativa) {
+		this.unidadeFederativa = unidadeFederativa;
 	}
 	
 }

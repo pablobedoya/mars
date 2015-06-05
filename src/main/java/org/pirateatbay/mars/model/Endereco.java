@@ -1,19 +1,22 @@
 package org.pirateatbay.mars.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
-public class EnderecoPessoa {
+public class Endereco {
 
 	@Id
-	@GeneratedValue
-	private long idEnderecoPessoa;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_endereco")
+	private long idEndereco;
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "id_pessoa")
 	private Pessoa pessoa;
 
@@ -25,12 +28,12 @@ public class EnderecoPessoa {
 	private String estado;
 	private String cep;
 
-	public long getIdEnderecoPessoa() {
-		return idEnderecoPessoa;
+	public long getIdEndereco() {
+		return idEndereco;
 	}
 
-	public void setIdEnderecoPessoa(long idEnderecoPessoa) {
-		this.idEnderecoPessoa = idEnderecoPessoa;
+	public void setIdEnderecoPessoa(long idEndereco) {
+		this.idEndereco = idEndereco;
 	}
 
 	public Pessoa getPessoa() {

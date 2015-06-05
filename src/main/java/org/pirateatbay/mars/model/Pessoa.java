@@ -2,30 +2,40 @@ package org.pirateatbay.mars.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Pessoa {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_pessoa")
 	private long idPessoa;
-	
-	@OneToOne
-	@JoinColumn(name="login")
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "login")
 	private Usuario usuario;
-	
+
 	private String matricula;
 	private String nome;
-	private String CPF;
-	private String RG;
+	private String cpf;
+	private String rg;
 	private String passaporte;
 	private String nacionalidade;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "data_nascimento")
 	private Date dataNascimento;
+
 	private String email;
 	private String telefone;
 
@@ -61,20 +71,20 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public String getCPF() {
-		return CPF;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
-	public String getRG() {
-		return RG;
+	public String getRg() {
+		return rg;
 	}
 
-	public void setRG(String rG) {
-		RG = rG;
+	public void setRg(String rg) {
+		this.rg = rg;
 	}
 
 	public String getPassaporte() {
