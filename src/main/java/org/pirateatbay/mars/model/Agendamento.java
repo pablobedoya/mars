@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Agendamento {
@@ -20,8 +22,10 @@ public class Agendamento {
 	@ManyToOne
 	@JoinColumn(name="id_especialista")
 	private Especialista especialista;
-	
+
+	@Temporal(TemporalType.DATE)
 	private Date data;
+	
 	private String horario;
 	private String tipo;
 	private String observacao;
