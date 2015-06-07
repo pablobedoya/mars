@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="content">
+		<h:form class="form-horizontal">
+			<fieldset>
+				<legend>Consultar Especialistas</legend>
+				<h:dataTable class="table table-striped table-hover" var="especialista" value="#{especialistaBean.especialistas}">
+					<f:facet name="header">
+						<h:outputText value="Especialistas"/>
+					</f:facet>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Matrícula"/>
+						</f:facet>
+						<h:outputText value="#{especialista.pessoa.matricula}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nome"/>
+						</f:facet>
+						<h:outputText value="#{especialista.pessoa.nome}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Email"/>
+						</f:facet>
+						<h:outputText value="#{especialista.pessoa.email}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Telefone"/>
+						</f:facet>
+						<h:outputText value="#{especialista.pessoa.telefone}" />
+					</h:column>
+				</h:dataTable>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

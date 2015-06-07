@@ -23,7 +23,7 @@
 				<div class="form-group">
 					<h:outputLabel for="inputNumeroConselho" class="col-lg-2 control-h:outputLabel">Número do Conselho</h:outputLabel>
 					<div class="col-lg-8">
-						<h:inputText class="form-control" id="inputNumeroConselho" value="#{especialistaBean.especialista.numeroConselho}" placeholder="Matrícula" />
+						<h:inputText class="form-control" id="inputNumeroConselho" value="#{especialistaBean.especialista.numeroConselho}" placeholder="Número de Conselho" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -50,7 +50,7 @@
 						<h:inputText class="form-control" id="inputCpf" value="#{especialistaBean.especialista.pessoa.cpf}" placeholder="CPF" />
 						<div class="checkbox">
 							<h:outputLabel>
-								<h:selectBooleanCheckbox binding="#{checkbox}">
+								<h:selectBooleanCheckbox binding="#{checkboxPassaporte}">
 									<f:ajax render="panelPassaporte" />
 								</h:selectBooleanCheckbox>
 								Estrangeiro(a)
@@ -59,7 +59,7 @@
 					</div>
 				</div>
 				<h:panelGroup id="panelPassaporte">
-					<p:outputPanel rendered="#{checkbox.value}">
+					<p:outputPanel rendered="#{checkboxPassaporte.value}">
 						<div class="form-group">
 							<h:outputLabel for="inputPassaporte" class="col-lg-2 control-h:outputLabel">Passaporte</h:outputLabel>
 							<div class="col-lg-8">
@@ -89,9 +89,7 @@
 				<div class="form-group">
 					<h:outputLabel for="inputDataNascimento" class="col-lg-2 control-h:outputLabel">Data de Nascimento</h:outputLabel>
 					<div class="col-lg-8">
-						<h:inputText class="form-control" id="inputDataNascimento" value="#{especialistaBean.especialista.pessoa.dataNascimento}" placeholder="Data de Nascimento">
-							<f:convertDateTime pattern="yyyy-MM-dd" />
-						</h:inputText>
+						<p:calendar id="inputDataNascimento" value="#{especialistaBean.especialista.pessoa.dataNascimento}" placeholder="Data de Nascimento" pattern="dd/MM/yyyy" mask="true" />
 					</div>
 				</div>
 				<div class="form-group">

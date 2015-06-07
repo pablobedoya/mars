@@ -18,6 +18,7 @@ public class EspecialistaBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Especialista especialista = new Especialista();
+	private List<Especialista> especialistas;
 	private EspecialistaDao especialistaDao = new EspecialistaDao();
 	
 	public Especialista getEspecialista() {
@@ -26,6 +27,13 @@ public class EspecialistaBean implements Serializable {
 	
 	public void setEspecialista(Especialista especialista) {
 		this.especialista = especialista;
+	}
+	
+	public List<Especialista> getEspecialistas() {
+		if (especialistas == null) {
+			this.especialistas = this.findAll();
+		}
+		return especialistas;
 	}
 	
 	public Especialista findEspecialista() {
