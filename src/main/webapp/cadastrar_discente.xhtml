@@ -8,78 +8,84 @@
 <ui:composition template="/templates/main.xhtml">
 	<ui:define name="content">
 		<form class="form-horizontal">
-			<fieldset>
-				<legend>Cadastro de Discente</legend>
+		<div class="container">
+				<h1>Cadastro de Discente</h1>
 				<div class="form-group">
-					<label for="selectPolo" class="col-lg-2 control-label">Polo</label>
-					<div class="col-lg-8">
+					<h3><label for="selectPolo" class="col-lg-3 control-label">Pólo:</label></h3>
+					<div class="col-lg-7">
 						<select class="form-control" id="selectPolo">
+							<option value=""></option>
+							<option value="Ciência da Computação">Ciência da Computação </option>
+							<option value="Engenharia de Software">Engenharia de Software</option>
+							<option value="BTI">BTI</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputMatricula" class="col-lg-2 control-label">Matrícula</label>
-					<div class="col-lg-8">
+					<h3><label for="inputMatricula" class="col-lg-3 control-label">Matrícula:</label></h3>
+					<div class="col-lg-7">
 						<input type="text" class="form-control" id="inputMatricula" placeholder="Matrícula" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputNome" class="col-lg-2 control-label">Nome</label>
-					<div class="col-lg-8">
+					<h3><label for="inputNome" class="col-lg-3 control-label">Nome:</label></h3>
+					<div class="col-lg-7">
 						<input type="text" class="form-control" id="inputNome" placeholder="Nome" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputCPF" class="col-lg-2 control-label">CPF</label>
-					<div class="col-lg-8">
+					<h3><label for="inputCPF" class="col-lg-3 control-label">CPF:</label></h3>
+					<div class="col-lg-7">
 						<input type="text" class="form-control" id="inputCPF" placeholder="CPF" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputRG" class="col-lg-2 control-label">RG</label>
-					<div class="col-lg-8">
+					<h3><label for="inputRG" class="col-lg-3 control-label">RG:</label></h3>
+					<div class="col-lg-7">
 						<input type="text" class="form-control" id="inputRG" placeholder="RG" />
 						<div class="checkbox">
-							<label>
-								<input type="checkbox" /> Estrangeiro(a)
-							</label>
+							<h3>
+								<label>
+									<input type="checkbox" /> Estrangeiro(a)
+								</label>
+							</h3>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputNacionalidade" class="col-lg-2 control-label">Nacionalidade</label>
-					<div class="col-lg-8">
+					<h3><label for="inputNacionalidade" class="col-lg-3 control-label">Nacionalidade:</label></h3>
+					<div class="col-lg-7">
 						<input type="text" class="form-control" id="inputNacionalidade" placeholder="Nacionalidade" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputEmail" class="col-lg-2 control-label">Email</label>
-					<div class="col-lg-8">
+					<h3><label for="inputEmail" class="col-lg-3 control-label">E-mail:</label></h3>
+					<div class="col-lg-7">
 						<input type="text" class="form-control" id="inputEmail" placeholder="Email" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputDataNascimento" class="col-lg-2 control-label">Data de Nascimento</label>
-					<div class="col-lg-8">
+					<h3><label for="inputDataNascimento" class="col-lg-3 control-label">Data de Nascimento:</label></h3>
+					<div class="col-lg-7">
 						<input type="text" class="form-control" id="inputDataNascimento" placeholder="Data de Nascimento" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputUsuario" class="col-lg-2 control-label">Usuário</label>
-					<div class="col-lg-8">
+					<h3><label for="inputUsuario" class="col-lg-3 control-label">Usuário:</label></h3>
+					<div class="col-lg-7">
 						<input type="text" class="form-control" id="inputUsuario" placeholder="Usuário" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputSenha" class="col-lg-2 control-label">Senha</label>
-					<div class="col-lg-8">
+					<h3><label for="inputSenha" class="col-lg-3 control-label">Senha:</label></h3>
+					<div class="col-lg-7">
 						<input type="password" class="form-control" id="inputSenha" placeholder="Senha" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputConfirmarSenha" class="col-lg-2 control-label">Confirmar Senha</label>
-					<div class="col-lg-8">
-						<input type="password" class="form-control" id="inputConfirmarSenha" placeholder="Confirmar Senha" />
+					<h3><label for="inputConfirmarSenha" class="col-lg-3 control-label">Confirmar Senha:</label></h3>
+					<div class="col-lg-7">
+						<input type="password" class="form-control" id="inputConfirmarSenha" placeholder="Confirmar Senha"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -90,7 +96,7 @@
 						</button>
 					</div>
 				</div>
-			</fieldset>
+			</div>
 		</form>
 	</ui:define>
 </ui:composition>
