@@ -7,94 +7,117 @@
 
 <ui:composition template="/templates/main.xhtml">
 	<ui:define name="content">
-		<form class="form-horizontal">
+		<h:form class="form-horizontal">
 			<fieldset>
 				<legend>Cadastro de Especialista</legend>
 				<div class="form-group">
-					<label for="selectArea" class="col-lg-2 control-label">Área</label>
+					<h:outputLabel for="selectArea" class="col-lg-2 control-label">Área</h:outputLabel>
 					<div class="col-lg-8">
-						<select class="form-control" id="selectArea">
-							<option>Pedagogia</option>
-							<option>Psicologia</option>
-							<option>Serviço Social</option>
-						</select>
+						<h:selectOneMenu class="form-control" id="selectArea" value="#{especialistaBean.especialista.area}">
+							<f:selectItem itemLabel="Pedagogia" itemValue="Pedagogia"></f:selectItem>
+							<f:selectItem itemLabel="Psicologia" itemValue="Psicologia"></f:selectItem>
+							<f:selectItem itemLabel="Serviço Social" itemValue="Serviço Social"></f:selectItem>
+						</h:selectOneMenu>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputMatricula" class="col-lg-2 control-label">Matrícula</label>
+					<h:outputLabel for="inputNumeroConselho" class="col-lg-2 control-h:outputLabel">Número do Conselho</h:outputLabel>
 					<div class="col-lg-8">
-						<input type="text" class="form-control" id="inputMatricula" placeholder="Matrícula" />
+						<h:inputText class="form-control" id="inputNumeroConselho" value="#{especialistaBean.especialista.numeroConselho}" placeholder="Matrícula" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputNome" class="col-lg-2 control-label">Nome</label>
+					<h:outputLabel for="inputMatricula" class="col-lg-2 control-h:outputLabel">Matrícula</h:outputLabel>
 					<div class="col-lg-8">
-						<input type="text" class="form-control" id="inputNome" placeholder="Nome" />
+						<h:inputText class="form-control" id="inputMatricula" value="#{especialistaBean.especialista.pessoa.matricula}" placeholder="Matrícula" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputCPF" class="col-lg-2 control-label">CPF</label>
+					<h:outputLabel for="inputNome" class="col-lg-2 control-h:outputLabel">Nome</h:outputLabel>
 					<div class="col-lg-8">
-						<input type="text" class="form-control" id="inputCPF" placeholder="CPF" />
+						<h:inputText class="form-control" id="inputNome" value="#{especialistaBean.especialista.pessoa.nome}" placeholder="Nome" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputRG" class="col-lg-2 control-label">RG</label>
+					<h:outputLabel for="inputRg" class="col-lg-2 control-h:outputLabel">RG</h:outputLabel>
 					<div class="col-lg-8">
-						<input type="text" class="form-control" id="inputRG" placeholder="RG" />
+						<h:inputText class="form-control" id="inputRg" value="#{especialistaBean.especialista.pessoa.rg}" placeholder="RG" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputCpf" class="col-lg-2 control-h:outputLabel">CPF</h:outputLabel>
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputCpf" value="#{especialistaBean.especialista.pessoa.cpf}" placeholder="CPF" />
 						<div class="checkbox">
-							<label>
-								<input type="checkbox" /> Estrangeiro(a)
-							</label>
+							<h:outputLabel>
+								<h:selectBooleanCheckbox binding="#{checkbox}">
+									<f:ajax render="panelPassaporte" />
+								</h:selectBooleanCheckbox>
+								Estrangeiro(a)
+							</h:outputLabel>
 						</div>
 					</div>
 				</div>
+				<h:panelGroup id="panelPassaporte">
+					<p:outputPanel rendered="#{checkbox.value}">
+						<div class="form-group">
+							<h:outputLabel for="inputPassaporte" class="col-lg-2 control-h:outputLabel">Passaporte</h:outputLabel>
+							<div class="col-lg-8">
+								<h:inputText class="form-control" id="inputPassaporte" value="#{especialistaBean.especialista.pessoa.passaporte}" placeholder="Passaporte" />
+							</div>
+						</div>
+					</p:outputPanel>
+				</h:panelGroup>
 				<div class="form-group">
-					<label for="inputNacionalidade" class="col-lg-2 control-label">Nacionalidade</label>
+					<h:outputLabel for="inputNacionalidade" class="col-lg-2 control-h:outputLabel">Nacionalidade</h:outputLabel>
 					<div class="col-lg-8">
-						<input type="text" class="form-control" id="inputNacionalidade" placeholder="Nacionalidade" />
+						<h:inputText class="form-control" id="inputNacionalidade" value="#{especialistaBean.especialista.pessoa.nacionalidade}" placeholder="Nacionalidade" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputEmail" class="col-lg-2 control-label">Email</label>
+					<h:outputLabel for="inputEmail" class="col-lg-2 control-h:outputLabel">Email</h:outputLabel>
 					<div class="col-lg-8">
-						<input type="text" class="form-control" id="inputEmail" placeholder="Email" />
+						<h:inputText class="form-control" id="inputEmail" value="#{especialistaBean.especialista.pessoa.email}" placeholder="Email" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputDataNascimento" class="col-lg-2 control-label">Data de Nascimento</label>
+					<h:outputLabel for="inputTelefone" class="col-lg-2 control-h:outputLabel">Telefone</h:outputLabel>
 					<div class="col-lg-8">
-						<input type="text" class="form-control" id="inputDataNascimento" placeholder="Data de Nascimento" />
+						<h:inputText class="form-control" id="inputTelefone" value="#{especialistaBean.especialista.pessoa.telefone}" placeholder="Telefone" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputUsuario" class="col-lg-2 control-label">Usuário</label>
+					<h:outputLabel for="inputDataNascimento" class="col-lg-2 control-h:outputLabel">Data de Nascimento</h:outputLabel>
 					<div class="col-lg-8">
-						<input type="text" class="form-control" id="inputUsuario" placeholder="Usuário" />
+						<h:inputText class="form-control" id="inputDataNascimento" value="#{especialistaBean.especialista.pessoa.dataNascimento}" placeholder="Data de Nascimento">
+							<f:convertDateTime pattern="yyyy-MM-dd" />
+						</h:inputText>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputSenha" class="col-lg-2 control-label">Senha</label>
+					<h:outputLabel for="inputUsuario" class="col-lg-2 control-h:outputLabel">Usuário</h:outputLabel>
 					<div class="col-lg-8">
-						<input type="password" class="form-control" id="inputSenha" placeholder="Senha" />
+						<h:inputText class="form-control" id="inputUsuario" value="#{especialistaBean.especialista.pessoa.usuario.login}" placeholder="Usuário" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputConfirmarSenha" class="col-lg-2 control-label">Confirmar Senha</label>
+					<h:outputLabel for="inputSenha" class="col-lg-2 control-h:outputLabel">Senha</h:outputLabel>
 					<div class="col-lg-8">
-						<input type="password" class="form-control" id="inputConfirmarSenha" placeholder="Confirmar Senha" />
+						<h:inputText class="form-control" id="inputSenha" value="#{especialistaBean.especialista.pessoa.usuario.senha}" placeholder="Senha" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-lg-10 col-lg-offset-2">
-						<button type="reset" class="btn btn-default">Cancelar</button>
-						<button type="submit" class="btn btn-default">
-							Avançar <span class="glyphicon glyphicon-forward"></span>
-						</button>
+						<h:commandLink id="cancelEspecialista" type="button" class="btn btn-default" action="#{especialistaBean.cancel}">
+							Cancelar
+						</h:commandLink>
+						<h:commandLink id="createEspecialista" type="button" class="btn btn-default" action="#{especialistaBean.createEspecialista}">
+							Cadastrar
+						</h:commandLink>
 					</div>
 				</div>
 			</fieldset>
-		</form>
+		</h:form>
 	</ui:define>
 </ui:composition>
 

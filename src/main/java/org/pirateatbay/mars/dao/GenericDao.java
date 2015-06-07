@@ -21,11 +21,17 @@ public abstract class GenericDao<T> implements Serializable {
 	}
 	
 	public T find(final Long id) {
-		return manager.find(clazz, id);
+		manager.getTransaction().begin();
+		T t = manager.find(clazz, id);
+		manager.close();
+		return t;
 	}
 	
 	public List<T> findAll() {
-		return manager.createQuery("SELECT e FROM "+ clazz.getSimpleName() + " e").getResultList();
+		manager.getTransaction().begin();
+		List<T> list = manager.createQuery("SELECT e FROM "+ clazz.getSimpleName() + " e").getResultList();
+		manager.close();
+		return list;
 	}
 	
 	public void save(final T entity) {
@@ -33,6 +39,7 @@ public abstract class GenericDao<T> implements Serializable {
 			manager.getTransaction().begin();
 			manager.persist(entity);
 			manager.getTransaction().commit();
+			manager.close();
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
 		}
@@ -43,6 +50,7 @@ public abstract class GenericDao<T> implements Serializable {
 			manager.getTransaction().begin();
 			manager.merge(this.manager.merge(entity));
 			manager.getTransaction().commit();
+			manager.close();
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
 		}
@@ -53,6 +61,7 @@ public abstract class GenericDao<T> implements Serializable {
 			manager.getTransaction().begin();
 			manager.remove(entity);
 			manager.getTransaction().commit();
+			manager.close();
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
 		}
