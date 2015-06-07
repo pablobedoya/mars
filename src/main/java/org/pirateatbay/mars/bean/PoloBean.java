@@ -1,10 +1,12 @@
 package org.pirateatbay.mars.bean;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.pirateatbay.mars.dao.PoloDao;
 import org.pirateatbay.mars.model.Polo;
@@ -50,4 +52,13 @@ public class PoloBean implements Serializable {
 		poloDao.delete(p);
 	}
 	
+	public void clear() {
+		this.polo = new Polo();
+	}
+	
+	public void cancel() throws IOException {
+		this.clear();
+		String uri = "index.xhtml";
+	    FacesContext.getCurrentInstance().getExternalContext().dispatch(uri);
+	}
 }

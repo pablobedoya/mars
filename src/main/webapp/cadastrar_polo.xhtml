@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="content">
+		<h:form class="form-horizontal">
+			<fieldset>
+				<legend>Cadastro de Polo</legend>
+				
+				<div class="form-group">
+					<h:outputLabel for="inputNomePolo" class="col-lg-2 control-h:outputLabel">Nome do Polo</h:outputLabel>
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputNomePolo" value="#{poloBean.polo.nome}" placeholder="Nome do Polo" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputCidade" class="col-lg-2 control-h:outputLabel">Cidade</h:outputLabel>
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputCidade" value="#{poloBean.polo.cidade}" placeholder="Cidade" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputUnidadeFederativa" class="col-lg-2 control-h:outputLabel">Unidade Federativa</h:outputLabel>
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputUnidadeFederativa" value="#{poloBean.polo.unidadeFederativa}" placeholder="Unidade Federativa" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-10 col-lg-offset-2">
+						<h:commandLink id="cancelPolo" type="button" class="btn btn-default" action="#{poloBean.cancel}">
+							Cancelar
+						</h:commandLink>
+						<h:commandLink id="createPolo" type="button" class="btn btn-default" action="#{poloBean.createPolo}">
+							Cadastrar
+						</h:commandLink>
+					</div>
+				</div>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>
