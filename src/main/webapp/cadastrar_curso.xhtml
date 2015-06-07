@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="content">
+		<h:form class="form-horizontal">
+			<fieldset>
+				<legend>Cadastro de Curso</legend>
+				
+				<div class="form-group">
+					<h:outputLabel for="inputNomeCurso" class="col-lg-2 control-h:outputLabel">Nome do Curso</h:outputLabel>
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputNomeCurso" value="#{cursoBean.curso.nome}" placeholder="Nome do Curso" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputNivel" class="col-lg-2 control-h:outputLabel">Nível</h:outputLabel>
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputNivel" value="#{cursoBean.curso.nivel}" placeholder="Nível" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputCodigoMec" class="col-lg-2 control-h:outputLabel">Código MEC</h:outputLabel>
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputCodigoMec" value="#{cursoBean.curso.codigoMec}" placeholder="Codigo MEC" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-10 col-lg-offset-2">
+						<h:commandLink id="cancelCurso" type="button" class="btn btn-default" action="#{cursoBean.cancel}">
+							Cancelar
+						</h:commandLink>
+						<h:commandLink id="createCurso" type="button" class="btn btn-default" action="#{cursoBean.createCurso}">
+							Cadastrar
+						</h:commandLink>
+					</div>
+				</div>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

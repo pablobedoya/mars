@@ -16,7 +16,9 @@ public class Curso {
 	
 	private String nome;
 	private String nivel;
-	private String codigo;
+	
+	@Column(name = "codigo_mec")
+	private String codigoMec;
 
 	public long getIdCurso() {
 		return idCurso;
@@ -42,12 +44,12 @@ public class Curso {
 		this.nivel = nivel;
 	}
 
-	public String getCodigo() {
-		return codigo;
+	public String getCodigoMec() {
+		return codigoMec;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCodigoMec(String codigoMec) {
+		this.codigoMec = codigoMec;
 	}
 
 }
