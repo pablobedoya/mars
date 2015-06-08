@@ -30,9 +30,7 @@ public class EspecialistaBean implements Serializable {
 	}
 	
 	public List<Especialista> getEspecialistas() {
-		if (especialistas == null) {
-			this.especialistas = this.findAll();
-		}
+		especialistas = especialistas == null ? findAll() : especialistas;
 		return especialistas;
 	}
 	
@@ -42,13 +40,13 @@ public class EspecialistaBean implements Serializable {
 	}
 	
 	public List<Especialista> findAll() {
-		List<Especialista> especialistas = especialistaDao.findAll();
+		especialistas = especialistaDao.findAll();
 		return especialistas;
 	}
 	
 	public void createEspecialista() {
 		especialistaDao.save(especialista);
-		this.success();
+		success();
 	}
 	
 	public void updateEspecialista() {
@@ -58,21 +56,22 @@ public class EspecialistaBean implements Serializable {
 	
 	public void deleteEspecialista() {
 		Especialista e = especialistaDao.find(especialista.getIdEspecialista());
+		System.out.println(especialista.getIdEspecialista());
 		especialistaDao.delete(e);
 	}
 	
 	public void clear() {
-		this.especialista = new Especialista();
+		especialista = new Especialista();
 	}
 	
 	public void cancel() throws IOException {
-		this.clear();
+		clear();
 		String uri = "index.xhtml";
 	    FacesContext.getCurrentInstance().getExternalContext().dispatch(uri);
 	}
 	
 	public void success() {
-		this.clear();
+		clear();
 	    try {
 			String uri = "index.xhtml";
 			FacesContext.getCurrentInstance().getExternalContext().dispatch(uri);
@@ -82,7 +81,7 @@ public class EspecialistaBean implements Serializable {
 	}
 	
 	public void backward() throws IOException {
-		this.clear();
+		clear();
 		String uri = "cadastrar_especialista.xhtml";
 	    FacesContext.getCurrentInstance().getExternalContext().dispatch(uri);
 	}

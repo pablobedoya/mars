@@ -9,7 +9,7 @@
 	<ui:define name="content">
 		<h:form class="form-horizontal">
 			<fieldset>
-				<legend>Cadastro de Especialista</legend>
+				<legend>Cadastrar Especialista</legend>
 				<div class="form-group">
 					<h:outputLabel for="selectArea" class="col-lg-2 control-label">Área</h:outputLabel>
 					<div class="col-lg-8">
@@ -107,10 +107,10 @@
 				<div class="form-group">
 					<div class="col-lg-10 col-lg-offset-2">
 						<h:commandLink id="cancelEspecialista" type="button" class="btn btn-default" action="#{especialistaBean.cancel}">
-							Cancelar
+							<h:outputText value="Cancelar" />
 						</h:commandLink>
-						<h:commandLink id="createEspecialista" type="button" class="btn btn-default" action="#{especialistaBean.createEspecialista}">
-							Cadastrar
+						<h:commandLink id="createEspecialista" type="button" class="btn btn-primary" action="#{especialistaBean.createEspecialista}">
+							<h:outputText value="Cadastrar" />
 						</h:commandLink>
 					</div>
 				</div>
