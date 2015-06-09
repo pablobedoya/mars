@@ -11,12 +11,12 @@ import org.pirateatbay.mars.model.Curso;
 @FacesConverter(forClass = Curso.class, value = "CursoConverter")
 public class CursoConverter implements Converter {
 	
-	private CursoDAO cursoDao = new CursoDAO();
+	private CursoDAO cursoDAO = new CursoDAO();
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		try {
-			return cursoDao.find(Long.parseLong(value));
+			return cursoDAO.find(Long.parseLong(value));
 		} catch (NumberFormatException e) {
 			return null;
 		}

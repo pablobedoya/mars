@@ -11,12 +11,12 @@ import org.pirateatbay.mars.model.Polo;
 @FacesConverter(forClass = Polo.class, value = "PoloConverter")
 public class PoloConverter implements Converter {
 	
-	private PoloDAO poloDao = new PoloDAO();
+	private PoloDAO poloDAO = new PoloDAO();
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		try {
-			return poloDao.find(Long.parseLong(value));
+			return poloDAO.find(Long.parseLong(value));
 		} catch (NumberFormatException e) {
 			return null;
 		}
