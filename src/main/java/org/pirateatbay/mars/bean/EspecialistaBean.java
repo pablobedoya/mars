@@ -42,28 +42,27 @@ public class EspecialistaBean implements Serializable {
 		return especialistas;
 	}
 	
-	public void createEspecialista() {
+	public String createEspecialista() {
 		especialistaDao.save(especialista);
+		return "index.xhtml?faces-redirect=true";
 	}
 	
-	public void updateEspecialista() {
+	public String updateEspecialista() {
 		Especialista e = especialistaDao.find(especialista.getIdEspecialista());
 		especialistaDao.update(e);
 		especialistas = null; // Update list 'especialistas'
+		return "remover_especialista.xhtml";
 	}
 	
-	public void deleteEspecialista() {
+	public String deleteEspecialista() {
 		Especialista e = especialistaDao.find(especialista.getIdEspecialista());
 		especialistaDao.delete(e);
 		especialistas = null; // Update list 'especialistas'
+		return "remover_especialista.xhtml";
 	}
 	
 	public String cancel() {
 		return "index.xhtml";
-	}
-	
-	public String success() {
-		return "index.xhtml?faces-redirect=true";
 	}
 	
 	public void backward() {
