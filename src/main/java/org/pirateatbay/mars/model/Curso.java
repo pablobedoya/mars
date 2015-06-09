@@ -51,5 +51,20 @@ public class Curso {
 	public void setCodigoMec(String codigoMec) {
 		this.codigoMec = codigoMec;
 	}
+	
+	@Override
+	public int hashCode() {
+		return (int) getIdCurso();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Curso) {
+			Curso curso = (Curso) obj;
+			return curso.getIdCurso() == idCurso;
+		}
+
+		return false;
+	}
 
 }

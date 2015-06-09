@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.pirateatbay.mars.dao.EspecialistaDao;
 import org.pirateatbay.mars.model.Especialista;
 
-@SessionScoped
+@ViewScoped
 @ManagedBean
 public class EspecialistaBean implements Serializable {
 	

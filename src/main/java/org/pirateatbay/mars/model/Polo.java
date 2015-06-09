@@ -52,4 +52,19 @@ public class Polo {
 		this.unidadeFederativa = unidadeFederativa;
 	}
 	
+	@Override
+	public int hashCode() {
+		return (int) getIdPolo();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Polo) {
+			Polo polo = (Polo) obj;
+			return polo.getIdPolo() == idPolo;
+		}
+
+		return false;
+	}
+	
 }

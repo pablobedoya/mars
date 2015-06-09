@@ -1,5 +1,6 @@
 package org.pirateatbay.mars.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,9 +15,9 @@ public class Discente {
 	private long idDiscente;
 
 	@MapsId
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_discente")
-	private Pessoa pessoa;
+	private Pessoa pessoa = new Pessoa();
 
 	@ManyToOne
 	@JoinColumn(name = "id_curso")
@@ -56,6 +57,21 @@ public class Discente {
 
 	public void setPolo(Polo polo) {
 		this.polo = polo;
+	}
+	
+	@Override
+	public int hashCode() {
+		return (int) getIdDiscente();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Discente) {
+			Discente discente = (Discente) obj;
+			return discente.getIdDiscente() == idDiscente;
+		}
+
+		return false;
 	}
 
 }

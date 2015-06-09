@@ -7,97 +7,115 @@
 
 <ui:composition template="/templates/main.xhtml">
 	<ui:define name="content">
-		<form class="form-horizontal">
-		<div class="container">
-				<h1>Cadastro de Discente</h1>
+		<h:form class="form-horizontal">
+			<fieldset>
+				<legend>Cadastrar Discente</legend>
 				<div class="form-group">
-					<h3><label for="selectPolo" class="col-lg-3 control-label">Pólo:</label></h3>
-					<div class="col-lg-7">
-						<select class="form-control" id="selectPolo">
-							<option value=""></option>
-							<option value="Ciência da Computação">Ciência da Computação </option>
-							<option value="Engenharia de Software">Engenharia de Software</option>
-							<option value="BTI">BTI</option>
-						</select>
+					<h:outputLabel for="selectCurso" class="col-lg-2 control-label" value="Curso" />
+					<div class="col-lg-8">
+<h:selectOneMenu id="selectCurso" value="#{discenteBean.discente.curso}" converter="CursoConverter">
+<f:selectItems value="#{cursoBean.cursos}" var="curso" itemValue="#{curso}" itemLabel="#{curso.nome}" />
+</h:selectOneMenu>
 					</div>
 				</div>
 				<div class="form-group">
-					<h3><label for="inputMatricula" class="col-lg-3 control-label">Matrícula:</label></h3>
-					<div class="col-lg-7">
-						<input type="text" class="form-control" id="inputMatricula" placeholder="Matrícula" />
+					<h:outputLabel for="selectPolo" class="col-lg-2 control-label" value="Polo" />
+					<div class="col-lg-8">
+<h:selectOneMenu id="selectPolo" value="#{discenteBean.discente.polo}" converter="PoloConverter">
+<f:selectItems value="#{poloBean.polos}" var="polo" itemValue="#{polo}" itemLabel="#{polo.nome}" />
+</h:selectOneMenu>
 					</div>
 				</div>
 				<div class="form-group">
-					<h3><label for="inputNome" class="col-lg-3 control-label">Nome:</label></h3>
-					<div class="col-lg-7">
-						<input type="text" class="form-control" id="inputNome" placeholder="Nome" />
+					<h:outputLabel for="inputMatricula" class="col-lg-2 control-h:outputLabel" value="Matrícula" />
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputMatricula" value="#{discenteBean.discente.pessoa.matricula}" placeholder="Matrícula" />
 					</div>
 				</div>
 				<div class="form-group">
-					<h3><label for="inputCPF" class="col-lg-3 control-label">CPF:</label></h3>
-					<div class="col-lg-7">
-						<input type="text" class="form-control" id="inputCPF" placeholder="CPF" />
+					<h:outputLabel for="inputNome" class="col-lg-2 control-h:outputLabel" value="Nome" />
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputNome" value="#{discenteBean.discente.pessoa.nome}" placeholder="Nome" />
 					</div>
 				</div>
 				<div class="form-group">
-					<h3><label for="inputRG" class="col-lg-3 control-label">RG:</label></h3>
-					<div class="col-lg-7">
-						<input type="text" class="form-control" id="inputRG" placeholder="RG" />
+					<h:outputLabel for="inputRg" class="col-lg-2 control-h:outputLabel" value="RG" />
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputRg" value="#{discenteBean.discente.pessoa.rg}" placeholder="RG" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputCpf" class="col-lg-2 control-h:outputLabel" value="CPF" />
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputCpf" value="#{discenteBean.discente.pessoa.cpf}" placeholder="CPF" />
 						<div class="checkbox">
-							<h3>
-								<label>
-									<input type="checkbox" /> Estrangeiro(a)
-								</label>
-							</h3>
+							<h:outputLabel>
+								<h:selectBooleanCheckbox binding="#{checkboxPassaporte}">
+									<f:ajax render="panelPassaporte" />
+								</h:selectBooleanCheckbox>
+								<h:outputText value="Estrangeiro(a)" />
+							</h:outputLabel>
 						</div>
 					</div>
 				</div>
+				<h:panelGroup id="panelPassaporte">
+					<p:outputPanel rendered="#{checkboxPassaporte.value}">
+						<div class="form-group">
+							<h:outputLabel for="inputPassaporte" class="col-lg-2 control-h:outputLabel" value="Passaporte" />
+							<div class="col-lg-8">
+								<h:inputText class="form-control" id="inputPassaporte" value="#{discenteBean.discente.pessoa.passaporte}" placeholder="Passaporte" />
+							</div>
+						</div>
+					</p:outputPanel>
+				</h:panelGroup>
 				<div class="form-group">
-					<h3><label for="inputNacionalidade" class="col-lg-3 control-label">Nacionalidade:</label></h3>
-					<div class="col-lg-7">
-						<input type="text" class="form-control" id="inputNacionalidade" placeholder="Nacionalidade" />
+					<h:outputLabel for="inputNacionalidade" class="col-lg-2 control-h:outputLabel" value="Nacionalidade" />
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputNacionalidade" value="#{discenteBean.discente.pessoa.nacionalidade}" placeholder="Nacionalidade" />
 					</div>
 				</div>
 				<div class="form-group">
-					<h3><label for="inputEmail" class="col-lg-3 control-label">E-mail:</label></h3>
-					<div class="col-lg-7">
-						<input type="text" class="form-control" id="inputEmail" placeholder="Email" />
+					<h:outputLabel for="inputEmail" class="col-lg-2 control-h:outputLabel" value="Email" />
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputEmail" value="#{discenteBean.discente.pessoa.email}" placeholder="Email" />
 					</div>
 				</div>
 				<div class="form-group">
-					<h3><label for="inputDataNascimento" class="col-lg-3 control-label">Data de Nascimento:</label></h3>
-					<div class="col-lg-7">
-						<input type="text" class="form-control" id="inputDataNascimento" placeholder="Data de Nascimento" />
+					<h:outputLabel for="inputTelefone" class="col-lg-2 control-h:outputLabel" value="Telefone" />
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputTelefone" value="#{discenteBean.discente.pessoa.telefone}" placeholder="Telefone" />
 					</div>
 				</div>
 				<div class="form-group">
-					<h3><label for="inputUsuario" class="col-lg-3 control-label">Usuário:</label></h3>
-					<div class="col-lg-7">
-						<input type="text" class="form-control" id="inputUsuario" placeholder="Usuário" />
+					<h:outputLabel for="inputDataNascimento" class="col-lg-2 control-h:outputLabel" value="Data de Nascimento" />
+					<div class="col-lg-8">
+						<p:calendar id="inputDataNascimento" value="#{discenteBean.discente.pessoa.dataNascimento}" placeholder="Data de Nascimento" pattern="dd/MM/yyyy" mask="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<h3><label for="inputSenha" class="col-lg-3 control-label">Senha:</label></h3>
-					<div class="col-lg-7">
-						<input type="password" class="form-control" id="inputSenha" placeholder="Senha" />
+					<h:outputLabel for="inputUsuario" class="col-lg-2 control-h:outputLabel" value="Usuário" />
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputUsuario" value="#{discenteBean.discente.pessoa.usuario.login}" placeholder="Usuário" />
 					</div>
 				</div>
 				<div class="form-group">
-					<h3><label for="inputConfirmarSenha" class="col-lg-3 control-label">Confirmar Senha:</label></h3>
-					<div class="col-lg-7">
-						<input type="password" class="form-control" id="inputConfirmarSenha" placeholder="Confirmar Senha"/>
+					<h:outputLabel for="inputSenha" class="col-lg-2 control-h:outputLabel" value="Senha" />
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputSenha" value="#{discenteBean.discente.pessoa.usuario.senha}" placeholder="Senha" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-lg-10 col-lg-offset-2">
-						<button type="reset" class="btn btn-default">Cancelar</button>
-						<button type="submit" class="btn btn-default">
-							Avançar <span class="glyphicon glyphicon-forward"></span>
-						</button>
+						<h:commandLink id="cancelDiscente" type="button" class="btn btn-default" action="#{discenteBean.cancel}">
+							<h:outputText value="Cancelar" />
+						</h:commandLink>
+						<h:commandLink id="createDiscente" type="button" class="btn btn-primary" action="#{discenteBean.createDiscente}">
+							<h:outputText value="Cadastrar" />
+						</h:commandLink>
 					</div>
 				</div>
-			</div>
-		</form>
+			</fieldset>
+		</h:form>
 	</ui:define>
 </ui:composition>
 

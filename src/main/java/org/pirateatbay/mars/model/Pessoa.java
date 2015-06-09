@@ -126,5 +126,20 @@ public class Pessoa {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	
+	@Override
+	public int hashCode() {
+		return (int) getIdPessoa();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Pessoa) {
+			Pessoa pessoa = (Pessoa) obj;
+			return pessoa.getIdPessoa() == idPessoa;
+		}
+
+		return false;
+	}
 
 }

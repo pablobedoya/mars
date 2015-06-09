@@ -41,7 +41,7 @@ public class ParticipanteId implements Serializable {
     public boolean equals(Object obj) {
         if(obj instanceof ParticipanteId){
             ParticipanteId participanteId = (ParticipanteId) obj;
-            return participanteId.discente == discente && participanteId.agendamento == agendamento;
+            return participanteId.agendamento == agendamento && participanteId.discente == discente;
         }
  
         return false;

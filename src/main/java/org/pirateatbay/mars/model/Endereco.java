@@ -99,5 +99,20 @@ public class Endereco {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+	
+	@Override
+	public int hashCode() {
+		return (int) getIdEndereco();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Endereco) {
+			Endereco endereco = (Endereco) obj;
+			return endereco.getIdEndereco() == idEndereco;
+		}
+
+		return false;
+	}
 
 }

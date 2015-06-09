@@ -26,5 +26,20 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	@Override
+	public int hashCode() {
+		return login.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Usuario) {
+			Usuario usuario = (Usuario) obj;
+			return usuario.getLogin() == login;
+		}
+
+		return false;
+	}
 
 }

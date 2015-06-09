@@ -77,5 +77,20 @@ public class Agendamento {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
+	
+	@Override
+	public int hashCode() {
+		return (int) getIdAgendamento();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Agendamento) {
+			Agendamento agendamento = (Agendamento) obj;
+			return agendamento.getIdAgendamento() == idAgendamento;
+		}
+
+		return false;
+	}
 
 }

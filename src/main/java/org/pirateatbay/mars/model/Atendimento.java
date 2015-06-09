@@ -89,5 +89,20 @@ public class Atendimento {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
+	
+	@Override
+	public int hashCode() {
+		return (int) getIdAtendimento();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Atendimento) {
+			Atendimento atendimento = (Atendimento) obj;
+			return atendimento.getIdAtendimento() == idAtendimento;
+		}
+
+		return false;
+	}
 
 }

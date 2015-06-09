@@ -55,5 +55,20 @@ public class Especialista {
 	public void setNumeroConselho(String numeroConselho) {
 		this.numeroConselho = numeroConselho;
 	}
+	
+	@Override
+	public int hashCode() {
+		return (int) getIdEspecialista();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Especialista) {
+			Especialista especialista = (Especialista) obj;
+			return especialista.getIdEspecialista() == idEspecialista;
+		}
+
+		return false;
+	}
 
 }
