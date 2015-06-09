@@ -6,7 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.pirateatbay.mars.dao.EspecialistaDao;
+import org.pirateatbay.mars.dao.EspecialistaDAO;
 import org.pirateatbay.mars.model.Especialista;
 
 @ViewScoped
@@ -17,7 +17,7 @@ public class EspecialistaBean implements Serializable {
 	
 	private Especialista especialista = new Especialista();
 	private List<Especialista> especialistas;
-	private EspecialistaDao especialistaDao = new EspecialistaDao();
+	private EspecialistaDAO especialistaDAO = new EspecialistaDAO();
 	
 	public Especialista getEspecialista() {
 		return especialista;
@@ -33,30 +33,30 @@ public class EspecialistaBean implements Serializable {
 	}
 	
 	public Especialista findEspecialista() {
-		Especialista e = especialistaDao.find(especialista.getIdEspecialista());
+		Especialista e = especialistaDAO.find(especialista.getIdEspecialista());
 		return e;
 	}
 	
 	public List<Especialista> findAll() {
-		especialistas = especialistaDao.findAll();
+		especialistas = especialistaDAO.findAll();
 		return especialistas;
 	}
 	
 	public String createEspecialista() {
-		especialistaDao.save(especialista);
+		especialistaDAO.save(especialista);
 		return "index.xhtml?faces-redirect=true";
 	}
 	
 	public String updateEspecialista() {
-		Especialista e = especialistaDao.find(especialista.getIdEspecialista());
-		especialistaDao.update(e);
+		Especialista e = especialistaDAO.find(especialista.getIdEspecialista());
+		especialistaDAO.update(e);
 		especialistas = null; // Update list 'especialistas'
 		return "remover_especialista.xhtml";
 	}
 	
 	public String deleteEspecialista() {
-		Especialista e = especialistaDao.find(especialista.getIdEspecialista());
-		especialistaDao.delete(e);
+		Especialista e = especialistaDAO.find(especialista.getIdEspecialista());
+		especialistaDAO.delete(e);
 		especialistas = null; // Update list 'especialistas'
 		return "remover_especialista.xhtml";
 	}

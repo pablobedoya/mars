@@ -2,11 +2,11 @@ package org.pirateatbay.mars.dao;
 
 import org.pirateatbay.mars.model.Polo;
 
-public class PoloDao extends GenericDao<Polo> {
+public class PoloDAO extends GenericDAO<Polo> {
 
 	private static final long serialVersionUID = 1L;
 	
-	public PoloDao () {
+	public PoloDAO () {
 		setClazz(Polo.class);
 	}
 	

@@ -5,13 +5,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import org.pirateatbay.mars.dao.CursoDao;
+import org.pirateatbay.mars.dao.CursoDAO;
 import org.pirateatbay.mars.model.Curso;
 
 @FacesConverter(forClass = Curso.class, value = "CursoConverter")
 public class CursoConverter implements Converter {
 	
-	private CursoDao cursoDao = new CursoDao();
+	private CursoDAO cursoDao = new CursoDAO();
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {

@@ -7,19 +7,19 @@ import javax.persistence.EntityManager;
 
 import org.pirateatbay.mars.util.JpaUtil;
 
-public abstract class GenericDao<T> implements Serializable {
+public abstract class GenericDAO<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private Class<T> clazz;
 	
-	private EntityManager manager = JpaUtil.getEntityManager();
+	protected EntityManager manager = JpaUtil.getEntityManager();
 	
 	public void setClazz(final Class<T> clazz) {
 		this.clazz = clazz;
 	}
 	
-	public T find(final Long id) {
+	public T find(final long id) {
 		T t = manager.find(clazz, id);
 		return t;
 	}

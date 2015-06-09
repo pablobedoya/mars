@@ -5,13 +5,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import org.pirateatbay.mars.dao.PoloDao;
+import org.pirateatbay.mars.dao.PoloDAO;
 import org.pirateatbay.mars.model.Polo;
 
 @FacesConverter(forClass = Polo.class, value = "PoloConverter")
 public class PoloConverter implements Converter {
 	
-	private PoloDao poloDao = new PoloDao();
+	private PoloDAO poloDao = new PoloDAO();
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {

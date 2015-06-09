@@ -13,17 +13,17 @@
 				<div class="form-group">
 					<h:outputLabel for="selectCurso" class="col-lg-2 control-label" value="Curso" />
 					<div class="col-lg-8">
-<h:selectOneMenu id="selectCurso" value="#{discenteBean.discente.curso}" converter="CursoConverter">
-<f:selectItems value="#{cursoBean.cursos}" var="curso" itemValue="#{curso}" itemLabel="#{curso.nome}" />
-</h:selectOneMenu>
+						<h:selectOneMenu id="selectCurso" value="#{discenteBean.discente.curso}" converter="CursoConverter">
+							<f:selectItems value="#{cursoBean.cursos}" var="curso" itemValue="#{curso}" itemLabel="#{curso.nome}" />
+						</h:selectOneMenu>
 					</div>
 				</div>
 				<div class="form-group">
 					<h:outputLabel for="selectPolo" class="col-lg-2 control-label" value="Polo" />
 					<div class="col-lg-8">
-<h:selectOneMenu id="selectPolo" value="#{discenteBean.discente.polo}" converter="PoloConverter">
-<f:selectItems value="#{poloBean.polos}" var="polo" itemValue="#{polo}" itemLabel="#{polo.nome}" />
-</h:selectOneMenu>
+						<h:selectOneMenu id="selectPolo" value="#{discenteBean.discente.polo}" converter="PoloConverter">
+							<f:selectItems value="#{poloBean.polos}" var="polo" itemValue="#{polo}" itemLabel="#{polo.nome}" />
+						</h:selectOneMenu>
 					</div>
 				</div>
 				<div class="form-group">
@@ -101,7 +101,7 @@
 				<div class="form-group">
 					<h:outputLabel for="inputSenha" class="col-lg-2 control-h:outputLabel" value="Senha" />
 					<div class="col-lg-8">
-						<h:inputText class="form-control" id="inputSenha" value="#{discenteBean.discente.pessoa.usuario.senha}" placeholder="Senha" />
+						<h:inputSecret class="form-control" id="inputSenha" value="#{discenteBean.discente.pessoa.usuario.senha}" placeholder="Senha" />
 					</div>
 				</div>
 				<div class="form-group">

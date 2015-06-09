@@ -6,7 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.pirateatbay.mars.dao.PoloDao;
+import org.pirateatbay.mars.dao.PoloDAO;
 import org.pirateatbay.mars.model.Polo;
 
 @ViewScoped
@@ -17,7 +17,7 @@ public class PoloBean implements Serializable {
 	
 	private Polo polo = new Polo();
 	private List<Polo> polos;
-	private PoloDao poloDao = new PoloDao();
+	private PoloDAO poloDAO = new PoloDAO();
 	
 	public Polo getPolo() {
 		return polo;
@@ -33,27 +33,27 @@ public class PoloBean implements Serializable {
 	}
 
 	public Polo findPolo() {
-		Polo p = poloDao.find(polo.getIdPolo());
+		Polo p = poloDAO.find(polo.getIdPolo());
 		return p;
 	}
 	
 	public List<Polo> findAll() {
-		List<Polo> polos = poloDao.findAll();
+		List<Polo> polos = poloDAO.findAll();
 		return polos;
 	}
 	
 	public void createPolo() {
-		poloDao.save(polo);
+		poloDAO.save(polo);
 	}
 	
 	public void updatePolo() {
-		Polo p = poloDao.find(polo.getIdPolo());
-		poloDao.update(p);
+		Polo p = poloDAO.find(polo.getIdPolo());
+		poloDAO.update(p);
 	}
 	
 	public void deletePolo() {
-		Polo p = poloDao.find(polo.getIdPolo());
-		poloDao.delete(p);
+		Polo p = poloDAO.find(polo.getIdPolo());
+		poloDAO.delete(p);
 	}
 	
 }
