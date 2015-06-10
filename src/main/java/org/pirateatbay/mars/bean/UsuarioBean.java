@@ -41,7 +41,7 @@ public class UsuarioBean implements Serializable {
 	
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "login?faces-redirect=true";
+		return "/login?faces-redirect=true";
 	}
 	
 	public boolean isLoggedIn() {
