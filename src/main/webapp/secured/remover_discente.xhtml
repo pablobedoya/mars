@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="content">
+		<h:panelGroup rendered="#{!discenteBean.editSelected}">
+			<h:form class="form-horizontal">
+				<legend>Remover Discente</legend>
+				<h:panelGroup class="alert alert-dismissible alert-info" layout="block" rendered="#{empty discenteBean.discentes}">
+					<h:outputText value="Nenhum resultado foi encontrado" />
+				</h:panelGroup>
+				<h:dataTable class="table table-striped table-hover" var="discente" value="#{discenteBean.discentes}" rendered="#{not empty discenteBean.discentes}">
+					<f:facet name="header">
+						<h:outputText value="Discentes" />
+					</f:facet>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Matrícula"/>
+						</f:facet>
+						<h:outputText value="#{discente.pessoa.matricula}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nome"/>
+						</f:facet>
+						<h:outputText value="#{discente.pessoa.nome}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Email"/>
+						</f:facet>
+						<h:outputText value="#{discente.pessoa.email}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Telefone"/>
+						</f:facet>
+						<h:outputText value="#{discente.pessoa.telefone}" />
+					</h:column>
+					<h:column>
+						<h:commandLink type="button" class="btn btn-default" action="#{discenteBean.show}">
+							<h:panelGroup class="glyphicon glyphicon-edit"></h:panelGroup>
+							<f:setPropertyActionListener target="#{discenteBean.discente}" value="#{discente}" />
+						</h:commandLink>
+						<h:commandLink class="btn btn-danger" action="#{discenteBean.deleteDiscente}" onclick="if (!confirm('Deseja realmente excluir o discente #{discente.pessoa.nome}?')) return false;">
+							<h:panelGroup class="glyphicon glyphicon-trash"></h:panelGroup>
+							<f:setPropertyActionListener target="#{discenteBean.discente}" value="#{discente}" />
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{discenteBean.editSelected}">
+			<h:form class="form-horizontal">
+				<fieldset>
+					<legend>Alterar Discente</legend>
+					<div class="form-group">
+						<h:outputLabel for="selectCurso" class="col-lg-2 control-label">Curso</h:outputLabel>
+							<div class="col-lg-8">
+							<h:selectOneMenu id="selectCurso" value="#{discenteBean.discente.curso}" converter="CursoConverter">
+								<f:selectItems value="#{cursoBean.cursos}" var="curso" itemValue="#{curso}" itemLabel="#{curso.nome}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="selectPolo" class="col-lg-2 control-label" value="Polo" />
+						<div class="col-lg-8">
+							<h:selectOneMenu id="selectPolo" value="#{discenteBean.discente.polo}" converter="PoloConverter">
+								<f:selectItems value="#{poloBean.polos}" var="polo" itemValue="#{polo}" itemLabel="#{polo.nome}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputMatricula" class="col-lg-2 control-label" value="Matrícula" />
+						<div class="col-lg-8">
+							<h:inputText class="form-control" id="inputMatricula" value="#{discenteBean.discente.pessoa.matricula}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputNome" class="col-lg-2 control-label" value="Nome" />
+						<div class="col-lg-8">
+							<h:inputText class="form-control" id="inputNome" value="#{discenteBean.discente.pessoa.nome}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputRg" class="col-lg-2 control-label" value="RG" />
+						<div class="col-lg-8">
+							<h:inputText class="form-control" id="inputRg" value="#{discenteBean.discente.pessoa.rg}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputCpf" class="col-lg-2 control-label" value="CPF" />
+						<div class="col-lg-8">
+							<h:inputText class="form-control" id="inputCpf" value="#{discenteBean.discente.pessoa.cpf}" />
+							<div class="checkbox">
+								<h:outputLabel>
+									<h:selectBooleanCheckbox binding="#{checkboxPassaporte}">
+										<f:ajax render="panelPassaporte" />
+									</h:selectBooleanCheckbox>
+									<h:outputText value="Estrangeiro(a)" />
+								</h:outputLabel>
+							</div>
+						</div>
+					</div>
+					<h:panelGroup id="panelPassaporte">
+						<p:outputPanel rendered="#{checkboxPassaporte.value}">
+							<div class="form-group">
+								<h:outputLabel for="inputPassaporte" class="col-lg-2 control-label" value="Passaporte" />
+								<div class="col-lg-8">
+									<h:inputText class="form-control" id="inputPassaporte" value="#{discenteBean.discente.pessoa.passaporte}" />
+								</div>
+							</div>
+						</p:outputPanel>
+					</h:panelGroup>
+					<div class="form-group">
+						<h:outputLabel for="inputNacionalidade" class="col-lg-2 control-label" value="Nacionalidade" />
+						<div class="col-lg-8">
+							<h:inputText class="form-control" id="inputNacionalidade" value="#{discenteBean.discente.pessoa.nacionalidade}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputEmail" class="col-lg-2 control-label" value="Email" />
+						<div class="col-lg-8">
+							<h:inputText class="form-control" id="inputEmail" value="#{discenteBean.discente.pessoa.email}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputTelefone" class="col-lg-2 control-label" value="Telefone" />
+						<div class="col-lg-8">
+							<h:inputText class="form-control" id="inputTelefone" value="#{discenteBean.discente.pessoa.telefone}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputDataNascimento" class="col-lg-2 control-label" value="Data de Nascimento" />
+						<div class="col-lg-8">
+							<p:calendar id="inputDataNascimento" value="#{discenteBean.discente.pessoa.dataNascimento}" pattern="dd/MM/yyyy" mask="true" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputUsuario" class="col-lg-2 control-label" value="Usuário" />
+						<div class="col-lg-8">
+							<h:inputText class="form-control" id="inputUsuario" value="#{discenteBean.discente.pessoa.usuario.login}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputSenha" class="col-lg-2 control-label" value="Senha" />
+						<div class="col-lg-8">
+							<h:inputText class="form-control" id="inputSenha" value="#{discenteBean.discente.pessoa.usuario.senha}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-10 col-lg-offset-2">
+							<h:commandLink id="cancelDiscente" type="button" class="btn btn-default" action="#{discenteBean.hide}">
+								<h:outputText value="Cancelar" />
+							</h:commandLink>
+							<h:commandLink id="createDiscente" type="button" class="btn btn-primary" action="#{discenteBean.updateDiscente}">
+								<h:outputText value="Alterar" />
+							</h:commandLink>
+						</div>
+					</div>
+				</fieldset>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
+
+</html>

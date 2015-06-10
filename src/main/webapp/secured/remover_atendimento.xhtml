@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="content">
+		<h:panelGroup rendered="#{!atendimentoBean.editSelected}">
+			<h:form class="form-horizontal">
+				<legend>Remover Atendimento</legend>
+				<h:panelGroup class="alert alert-dismissible alert-info" layout="block" rendered="#{empty atendimentoBean.atendimentos}">
+					<h:outputText value="Nenhum resultado foi encontrado" />
+				</h:panelGroup>
+				<h:dataTable class="table table-striped table-hover" var="atendimento" value="#{atendimentoBean.atendimentos}" rendered="#{not empty atendimentoBean.atendimentos}">
+					<f:facet name="header">
+						<h:outputText value="Atendimentos" />
+					</f:facet>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Discente"/>
+						</f:facet>
+						<h:outputText value="#{atendimento.discente.pessoa.nome}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Especialista"/>
+						</f:facet>
+						<h:outputText value="#{atendimento.especialista.pessoa.nome}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Data"/>
+						</f:facet>
+						<h:outputText value="#{atendimento.data}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Horário"/>
+						</f:facet>
+						<h:outputText value="#{atendimento.horario}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Situação"/>
+						</f:facet>
+						<h:outputText value="#{atendimento.situacao}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Observação"/>
+						</f:facet>
+						<h:outputText value="#{atendimento.observacao}" />
+					</h:column>
+					<h:column>
+						<h:commandLink type="button" class="btn btn-default" action="#{atendimentoBean.show}">
+							<h:panelGroup class="glyphicon glyphicon-edit"></h:panelGroup>
+							<f:setPropertyActionListener target="#{atendimentoBean.atendimento}" value="#{atendimento}" />
+						</h:commandLink>
+						<h:commandLink class="btn btn-danger" action="#{atendimentoBean.deleteAtendimento}" onclick="if (!confirm('Deseja realmente excluir esse atendimento?')) return false;">
+							<h:panelGroup class="glyphicon glyphicon-trash"></h:panelGroup>
+							<f:setPropertyActionListener target="#{atendimentoBean.atendimento}" value="#{atendimento}" />
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{atendimentoBean.editSelected}">
+			<h:form class="form-horizontal">
+				<fieldset>
+					<legend>Alterar Atendimento</legend>
+					<div class="form-group">
+						<h:outputLabel for="selectDiscente" class="col-lg-2 control-label" value="Discente" />
+						<div class="col-lg-8">
+							<h:selectOneMenu id="selectDiscente" value="#{atendimentoBean.atendimento.discente}" converter="DiscenteConverter">
+								<f:selectItems value="#{discenteBean.discentes}" var="discente" itemValue="#{discente}" itemLabel="#{discente.pessoa.nome}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="selectEspecialista" class="col-lg-2 control-label" value="Especialista" />
+						<div class="col-lg-8">
+							<h:selectOneMenu id="selectEspecialista" value="#{atendimentoBean.atendimento.especialista}" converter="EspecialistaConverter">
+								<f:selectItems value="#{especialistaBean.especialistas}" var="especialista" itemValue="#{especialista}" itemLabel="#{especialista.pessoa.nome}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputData" class="col-lg-2 control-label" value="Data" />
+						<div class="col-lg-8">
+							<p:calendar id="inputData" value="#{atendimentoBean.atendimento.data}" pattern="dd/MM/yyyy" mask="true" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputHorario" class="col-lg-2 control-label" value="Horário" />
+						<div class="col-lg-8">
+							<h:inputText class="form-control" id="inputHorario" value="#{atendimentoBean.atendimento.horario}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="selectSituacao" class="col-lg-2 control-label" value="Situação" />
+						<div class="col-lg-8">
+							<h:selectOneMenu class="form-control" id="selectSituacao" value="#{atendimentoBean.atendimento.situacao}">
+								<f:selectItem itemLabel="Ativo" itemValue="Ativo"></f:selectItem>
+								<f:selectItem itemLabel="Inativo" itemValue="Inativo"></f:selectItem>
+							</h:selectOneMenu>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputObservacao" class="col-lg-2 control-label" value="Observação" />
+						<div class="col-lg-8">
+							<h:inputTextarea class="form-control" id="inputObservacao" value="#{atendimentoBean.atendimento.observacao}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-10 col-lg-offset-2">
+							<h:commandLink id="cancelAtendimento" type="button" class="btn btn-default" action="#{atendimentoBean.hide}">
+								<h:outputText value="Cancelar" />
+							</h:commandLink>
+							<h:commandLink id="createAtendimento" type="button" class="btn btn-primary" action="#{atendimentoBean.updateAtendimento}">
+								<h:outputText value="Alterar" />
+							</h:commandLink>
+						</div>
+					</div>
+				</fieldset>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
+
+</html>

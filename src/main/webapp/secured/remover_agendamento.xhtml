@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="content">
+		<h:panelGroup rendered="#{!agendamentoBean.editSelected}">
+			<h:form class="form-horizontal">
+				<legend>Remover Agendamento</legend>
+				<h:panelGroup class="alert alert-dismissible alert-info" layout="block" rendered="#{empty agendamentoBean.agendamentos}">
+					<h:outputText value="Nenhum resultado foi encontrado" />
+				</h:panelGroup>
+				<h:dataTable class="table table-striped table-hover" var="agendamento" value="#{agendamentoBean.agendamentos}" rendered="#{not empty agendamentoBean.agendamentos}">
+					<f:facet name="header">
+						<h:outputText value="Agendamentos" />
+					</f:facet>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Especialista"/>
+						</f:facet>
+						<h:outputText value="#{agendamento.especialista.pessoa.nome}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Data"/>
+						</f:facet>
+						<h:outputText value="#{agendamento.data}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Horário"/>
+						</f:facet>
+						<h:outputText value="#{agendamento.horario}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Tipo"/>
+						</f:facet>
+						<h:outputText value="#{agendamento.tipo}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Observação"/>
+						</f:facet>
+						<h:outputText value="#{agendamento.observacao}" />
+					</h:column>
+					<h:column>
+						<h:commandLink type="button" class="btn btn-default" action="#{agendamentoBean.show}">
+							<h:panelGroup class="glyphicon glyphicon-edit"></h:panelGroup>
+							<f:setPropertyActionListener target="#{agendamentoBean.agendamento}" value="#{agendamento}" />
+						</h:commandLink>
+						<h:commandLink class="btn btn-danger" action="#{agendamentoBean.deleteAgendamento}" onclick="if (!confirm('Deseja realmente excluir esse agendamento?')) return false;">
+							<h:panelGroup class="glyphicon glyphicon-trash"></h:panelGroup>
+							<f:setPropertyActionListener target="#{agendamentoBean.agendamento}" value="#{agendamento}" />
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{agendamentoBean.editSelected}">
+			<h:form class="form-horizontal">
+				<fieldset>
+					<legend>Alterar Agendamento</legend>
+					<div class="form-group">
+						<h:outputLabel for="selectEspecialista" class="col-lg-2 control-label" value="Especialista" />
+						<div class="col-lg-8">
+							<h:selectOneMenu id="selectEspecialista" value="#{agendamentoBean.agendamento.especialista}" converter="EspecialistaConverter">
+								<f:selectItems value="#{especialistaBean.especialistas}" var="especialista" itemValue="#{especialista}" itemLabel="#{especialista.pessoa.nome}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputData" class="col-lg-2 control-label" value="Data" />
+						<div class="col-lg-8">
+							<p:calendar id="inputData" value="#{agendamentoBean.agendamento.data}" pattern="dd/MM/yyyy" mask="true" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputHorario" class="col-lg-2 control-label" value="Horário" />
+						<div class="col-lg-8">
+							<h:inputText class="form-control" id="inputHorario" value="#{agendamentoBean.agendamento.horario}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="selectTipo" class="col-lg-2 control-label" value="Tipo" />
+						<div class="col-lg-8">
+							<h:selectOneMenu class="form-control" id="selectTipo" value="#{agendamentoBean.agendamento.tipo}">
+								<f:selectItem itemLabel="Plantão Pedagógico" itemValue="Plantão Pedagógico"></f:selectItem>
+								<f:selectItem itemLabel="Apoio Psicológico" itemValue="Apoio Psicológico"></f:selectItem>
+								<f:selectItem itemLabel="Assistência Social" itemValue="Assistência Social"></f:selectItem>
+							</h:selectOneMenu>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel for="inputObservacao" class="col-lg-2 control-label" value="Observação" />
+						<div class="col-lg-8">
+							<h:inputTextarea class="form-control" id="inputObservacao" value="#{agendamentoBean.agendamento.observacao}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-10 col-lg-offset-2">
+							<h:commandLink id="cancelAgendamento" type="button" class="btn btn-default" action="#{agendamentoBean.hide}">
+								<h:outputText value="Cancelar" />
+							</h:commandLink>
+							<h:commandLink id="createAgendamento" type="button" class="btn btn-primary" action="#{agendamentoBean.updateAgendamento}">
+								<h:outputText value="Alterar" />
+							</h:commandLink>
+						</div>
+					</div>
+				</fieldset>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
+
+</html>
