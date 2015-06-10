@@ -42,22 +42,27 @@ public class CursoBean implements Serializable {
 		return cursos;
 	}
 
-	public void createCurso() {
+	public String createCurso() {
 		cursoDAO.save(curso);
+		return "index.xhtml?faces-redirect=true";
 	}
 
-	public void updateCurso() {
+	public String updateCurso() {
 		Curso c = cursoDAO.find(curso.getIdCurso());
 		cursoDAO.update(c);
+		cursos = null;
+		return "remover_curso.xhtml";
 	}
 
-	public void deleteCurso() {
+	public String deleteCurso() {
 		Curso c = cursoDAO.find(curso.getIdCurso());
 		cursoDAO.delete(c);
+		cursos = null;
+		return "remover_curso.xhtml";
 	}
-
+	
 	public String cancel() {
-		return "index.xhtml";
+		return "index.xhtml?faces-redirect=true";
 	}
 
 }

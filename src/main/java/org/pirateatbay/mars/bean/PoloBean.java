@@ -42,18 +42,27 @@ public class PoloBean implements Serializable {
 		return polos;
 	}
 	
-	public void createPolo() {
+	public String createPolo() {
 		poloDAO.save(polo);
+		return "index.xhtml?faces-redirect=true";
 	}
 	
-	public void updatePolo() {
+	public String updatePolo() {
 		Polo p = poloDAO.find(polo.getIdPolo());
 		poloDAO.update(p);
+		polos = null;
+		return "remover_polo.xhtml";
 	}
 	
-	public void deletePolo() {
+	public String deletePolo() {
 		Polo p = poloDAO.find(polo.getIdPolo());
 		poloDAO.delete(p);
+		polos = null;
+		return "remover_polo.xhtml";
+	}
+	
+	public String cancel() {
+		return "index.xhtml?faces-redirect=true";
 	}
 	
 }

@@ -18,6 +18,7 @@ public class EspecialistaBean implements Serializable {
 	private Especialista especialista = new Especialista();
 	private List<Especialista> especialistas;
 	private EspecialistaDAO especialistaDAO = new EspecialistaDAO();
+	private boolean editSelected;
 	
 	public Especialista getEspecialista() {
 		return especialista;
@@ -32,6 +33,22 @@ public class EspecialistaBean implements Serializable {
 		return especialistas;
 	}
 	
+	public boolean isEditSelected() {
+		return editSelected;
+	}
+	
+	public void setEditSelected(boolean selected) {
+		this.editSelected = selected;
+	}
+	
+	public void show() {
+		setEditSelected(true);
+	}
+	
+	public void hide() {
+		setEditSelected(false);
+	}
+
 	public Especialista findEspecialista() {
 		Especialista e = especialistaDAO.find(especialista.getIdEspecialista());
 		return e;
@@ -62,13 +79,7 @@ public class EspecialistaBean implements Serializable {
 	}
 	
 	public String cancel() {
-		return "index.xhtml";
-	}
-	
-	public void backward() {
-	}
-	
-	public void forward() {
+		return "index.xhtml?faces-redirect=true";
 	}
 
 }

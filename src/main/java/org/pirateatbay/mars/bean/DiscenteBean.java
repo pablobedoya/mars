@@ -62,7 +62,7 @@ public class DiscenteBean implements Serializable {
 	}
 	
 	public String cancel() {
-		return "index.xhtml";
+		return "index.xhtml?faces-redirect=true";
 	}
 
 }
