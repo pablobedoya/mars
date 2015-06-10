@@ -12,30 +12,30 @@
 				<legend>Cadastrar Curso</legend>
 				
 				<div class="form-group">
-					<h:outputLabel for="inputNomeCurso" class="col-lg-2 control-h:outputLabel">Nome</h:outputLabel>
+					<h:outputLabel for="inputNomeCurso" class="col-lg-2 control-label" value="Nome" />
 					<div class="col-lg-8">
-						<h:inputText class="form-control" id="inputNomeCurso" value="#{cursoBean.curso.nome}" placeholder="Nome" />
+						<h:inputText class="form-control" id="inputNomeCurso" value="#{cursoBean.curso.nome}" />
 					</div>
 				</div>
 				<div class="form-group">
-					<h:outputLabel for="inputNivel" class="col-lg-2 control-h:outputLabel">Nível</h:outputLabel>
+					<h:outputLabel for="inputNivel" class="col-lg-2 control-label" value="Nível" />
 					<div class="col-lg-8">
-						<h:inputText class="form-control" id="inputNivel" value="#{cursoBean.curso.nivel}" placeholder="Nível" />
+						<h:inputText class="form-control" id="inputNivel" value="#{cursoBean.curso.nivel}" />
 					</div>
 				</div>
 				<div class="form-group">
-					<h:outputLabel for="inputCodigoMec" class="col-lg-2 control-h:outputLabel">Código MEC</h:outputLabel>
+					<h:outputLabel for="inputCodigoMec" class="col-lg-2 control-label" value="Código MEC" />
 					<div class="col-lg-8">
-						<h:inputText class="form-control" id="inputCodigoMec" value="#{cursoBean.curso.codigoMec}" placeholder="Codigo MEC" />
+						<h:inputText class="form-control" id="inputCodigoMec" value="#{cursoBean.curso.codigoMec}" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-lg-10 col-lg-offset-2">
 						<h:commandLink id="cancelCurso" type="button" class="btn btn-default" action="#{cursoBean.cancel}">
-							Cancelar
+							<h:outputText value="Cancelar" />
 						</h:commandLink>
 						<h:commandLink id="createCurso" type="button" class="btn btn-default" action="#{cursoBean.createCurso}">
-							Cadastrar
+							<h:outputText value="Cadastrar" />
 						</h:commandLink>
 					</div>
 				</div>

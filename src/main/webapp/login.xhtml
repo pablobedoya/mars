@@ -4,14 +4,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<h:head>
-		<title>testando login</title>
-	</h:head>
-	<h:body>
-		<h:form>
-			<h:inputText value="#{usuarioBean.username}" />
-			<h:inputSecret value="#{usuarioBean.password}" />
-			<h:commandButton value="login" action="#{usuarioBean.login}" />
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="content">
+		<h:form class="col-md-12">
+			<div class="col-lg-4 col-lg-offset-4">
+				<div class="form-group">
+					<h:outputLabel for="inputUsername" class="col-sm-2 control-label" value="Usuário" />
+					<h:inputText class="form-control input-lg" id="inputUsername" value="#{usuarioBean.username}" />
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputPassword" class="col-sm-2 control-label" value="Senha" />
+					<h:inputSecret class="form-control input-lg" id="inputPassword" value="#{usuarioBean.password}" />
+				</div>
+				<div class="form-group">
+					<h:commandLink class="btn btn-lg btn-primary btn-block" action="#{usuarioBean.login}">
+						<h:outputText value="Entrar" />
+					</h:commandLink>
+				</div>
+			</div>
 		</h:form>
-	</h:body>
+	</ui:define>
+</ui:composition>
 </html>

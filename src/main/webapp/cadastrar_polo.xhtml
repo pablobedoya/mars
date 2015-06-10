@@ -12,30 +12,30 @@
 				<legend>Cadastro de Polo</legend>
 				
 				<div class="form-group">
-					<h:outputLabel for="inputNomePolo" class="col-lg-2 control-h:outputLabel">Nome do Polo</h:outputLabel>
+					<h:outputLabel for="inputNomePolo" class="col-lg-2 control-label" value="Nome do Polo" />
 					<div class="col-lg-8">
-						<h:inputText class="form-control" id="inputNomePolo" value="#{poloBean.polo.nome}" placeholder="Nome do Polo" />
+						<h:inputText class="form-control" id="inputNomePolo" value="#{poloBean.polo.nome}" />
 					</div>
 				</div>
 				<div class="form-group">
-					<h:outputLabel for="inputCidade" class="col-lg-2 control-h:outputLabel">Cidade</h:outputLabel>
+					<h:outputLabel for="inputCidade" class="col-lg-2 control-label" value="Cidade" />
 					<div class="col-lg-8">
-						<h:inputText class="form-control" id="inputCidade" value="#{poloBean.polo.cidade}" placeholder="Cidade" />
+						<h:inputText class="form-control" id="inputCidade" value="#{poloBean.polo.cidade}" />
 					</div>
 				</div>
 				<div class="form-group">
-					<h:outputLabel for="inputUnidadeFederativa" class="col-lg-2 control-h:outputLabel">Unidade Federativa</h:outputLabel>
+					<h:outputLabel for="inputUnidadeFederativa" class="col-lg-2 control-label" value="Unidade Federativa" />
 					<div class="col-lg-8">
-						<h:inputText class="form-control" id="inputUnidadeFederativa" value="#{poloBean.polo.unidadeFederativa}" placeholder="Unidade Federativa" />
+						<h:inputText class="form-control" id="inputUnidadeFederativa" value="#{poloBean.polo.unidadeFederativa}" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-lg-10 col-lg-offset-2">
 						<h:commandLink id="cancelPolo" type="button" class="btn btn-default" action="#{poloBean.cancel}">
-							Cancelar
+							<h:outputText value="Cadastrar" />
 						</h:commandLink>
 						<h:commandLink id="createPolo" type="button" class="btn btn-default" action="#{poloBean.createPolo}">
-							Cadastrar
+							<h:outputText value="Cadastrar" />
 						</h:commandLink>
 					</div>
 				</div>

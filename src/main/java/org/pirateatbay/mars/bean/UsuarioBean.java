@@ -34,13 +34,14 @@ public class UsuarioBean implements Serializable {
 				return (username = password = null);
 			}
 		} catch (NoResultException e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Falha ao carregar usuário."));
 			return null;
 		}
 	}
 	
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "index?faces-redirect=true";
+		return "login?faces-redirect=true";
 	}
 	
 	public boolean isLoggedIn() {
