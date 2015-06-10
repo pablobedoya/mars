@@ -18,6 +18,7 @@ public class CursoBean implements Serializable {
 	private Curso curso = new Curso();
 	private List<Curso> cursos;
 	private CursoDAO cursoDAO = new CursoDAO();
+	private boolean editSelected;
 
 	public Curso getCurso() {
 		return curso;
@@ -30,6 +31,22 @@ public class CursoBean implements Serializable {
 	public List<Curso> getCursos() {
 		cursos = cursos == null ? findAll() : cursos;
 		return cursos;
+	}
+	
+	public boolean isEditSelected() {
+		return editSelected;
+	}
+	
+	public void setEditSelected(boolean selected) {
+		this.editSelected = selected;
+	}
+	
+	public void show() {
+		setEditSelected(true);
+	}
+	
+	public void hide() {
+		setEditSelected(false);
 	}
 
 	public Curso findCurso() {
@@ -62,7 +79,7 @@ public class CursoBean implements Serializable {
 	}
 	
 	public String cancel() {
-		return "index.xhtml?faces-redirect=true";
+		return "/secured/index.xhtml?faces-redirect=true";
 	}
 
 }

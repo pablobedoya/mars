@@ -18,6 +18,7 @@ public class PoloBean implements Serializable {
 	private Polo polo = new Polo();
 	private List<Polo> polos;
 	private PoloDAO poloDAO = new PoloDAO();
+	private boolean editSelected;
 	
 	public Polo getPolo() {
 		return polo;
@@ -30,6 +31,22 @@ public class PoloBean implements Serializable {
 	public List<Polo> getPolos() {
 		polos = polos == null ? findAll() : polos;
 		return polos;
+	}
+	
+	public boolean isEditSelected() {
+		return editSelected;
+	}
+	
+	public void setEditSelected(boolean selected) {
+		this.editSelected = selected;
+	}
+	
+	public void show() {
+		setEditSelected(true);
+	}
+	
+	public void hide() {
+		setEditSelected(false);
 	}
 
 	public Polo findPolo() {
@@ -62,7 +79,7 @@ public class PoloBean implements Serializable {
 	}
 	
 	public String cancel() {
-		return "index.xhtml?faces-redirect=true";
+		return "/secured/index.xhtml?faces-redirect=true";
 	}
 	
 }

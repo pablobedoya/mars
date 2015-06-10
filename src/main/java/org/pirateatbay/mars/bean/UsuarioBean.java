@@ -28,7 +28,7 @@ public class UsuarioBean implements Serializable {
 			usuario = usuarioDAO.find(username, password);
 			
 			if (usuario != null) {
-				return "index?faces-redirect=true";
+				return "/secured/index?faces-redirect=true";
 			} else {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nome de usuário desconhecido e/ou senha inválida."));
 				return (username = password = null);

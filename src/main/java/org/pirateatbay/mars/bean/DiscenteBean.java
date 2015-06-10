@@ -18,6 +18,7 @@ public class DiscenteBean implements Serializable {
 	private Discente discente = new Discente();
 	private List<Discente> discentes;
 	private DiscenteDAO discenteDAO = new DiscenteDAO();
+	private boolean editSelected;
 
 	public Discente getDiscente() {
 		return discente;
@@ -30,6 +31,22 @@ public class DiscenteBean implements Serializable {
 	public List<Discente> getDiscentes() {
 		discentes = discentes == null ? findAll() : discentes;
 		return discentes;
+	}
+	
+	public boolean isEditSelected() {
+		return editSelected;
+	}
+	
+	public void setEditSelected(boolean selected) {
+		this.editSelected = selected;
+	}
+	
+	public void show() {
+		setEditSelected(true);
+	}
+	
+	public void hide() {
+		setEditSelected(false);
 	}
 	
 	public Discente findDiscente() {
@@ -62,7 +79,7 @@ public class DiscenteBean implements Serializable {
 	}
 	
 	public String cancel() {
-		return "index.xhtml?faces-redirect=true";
+		return "/secured/index.xhtml?faces-redirect=true";
 	}
 
 }

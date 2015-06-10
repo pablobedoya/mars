@@ -42,7 +42,7 @@ public abstract class GenericDAO<T> implements Serializable {
 	public void update(final T entity) {
 		try {
 			manager.getTransaction().begin();
-			manager.merge(this.manager.merge(entity));
+			manager.merge(entity);
 			manager.getTransaction().commit();
 		} catch (Exception e) {
 			manager.getTransaction().rollback();

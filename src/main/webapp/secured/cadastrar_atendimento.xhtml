@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="content">
+		<h:form class="form-horizontal">
+			<fieldset>
+				<legend>Cadastrar Atendimento</legend>
+				<div class="form-group">
+					<h:outputLabel for="selectDiscente" class="col-lg-2 control-label" value="Discente" />
+					<div class="col-lg-8">
+						<h:selectOneMenu id="selectDiscente" value="#{atendimentoBean.atendimento.discente}" converter="DiscenteConverter">
+							<f:selectItems value="#{discenteBean.discentes}" var="discente" itemValue="#{discente}" itemLabel="#{discente.pessoa.nome}" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="selectEspecialista" class="col-lg-2 control-label" value="Especialista" />
+					<div class="col-lg-8">
+						<h:selectOneMenu id="selectEspecialista" value="#{atendimentoBean.atendimento.especialista}" converter="EspecialistaConverter">
+							<f:selectItems value="#{especialistaBean.especialistas}" var="especialista" itemValue="#{especialista}" itemLabel="#{especialista.pessoa.nome}" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputData" class="col-lg-2 control-label" value="Data" />
+					<div class="col-lg-8">
+						<p:calendar id="inputData" value="#{atendimentoBean.atendimento.data}" pattern="dd/MM/yyyy" mask="true" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputHorario" class="col-lg-2 control-label" value="Horário" />
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputHorario" value="#{atendimentoBean.atendimento.horario}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="selectSituacao" class="col-lg-2 control-label" value="Situação" />
+					<div class="col-lg-8">
+						<h:selectOneMenu class="form-control" id="selectSituacao" value="#{atendimentoBean.atendimento.situacao}">
+							<f:selectItem itemLabel="Ativo" itemValue="Ativo"></f:selectItem>
+							<f:selectItem itemLabel="Inativo" itemValue="Inativo"></f:selectItem>
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputObservacao" class="col-lg-2 control-label" value="Observação" />
+					<div class="col-lg-8">
+						<h:inputTextarea class="form-control" id="inputObservacao" value="#{atendimentoBean.atendimento.observacao}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-10 col-lg-offset-2">
+						<h:commandLink id="cancelAtendimento" type="button" class="btn btn-default" action="#{atendimentoBean.cancel}">
+							<h:outputText value="Cancelar" />
+						</h:commandLink>
+						<h:commandLink id="createAtendimento" type="button" class="btn btn-primary" action="#{atendimentoBean.createAtendimento}">
+							<h:outputText value="Cadastrar" />
+						</h:commandLink>
+					</div>
+				</div>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

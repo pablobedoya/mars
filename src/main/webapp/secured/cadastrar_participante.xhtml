@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="content">
+		<h:form class="form-horizontal">
+			<fieldset>
+				<legend>Cadastrar Participante (not working)</legend>
+				<div class="form-group">
+					<h:outputLabel for="selectAgendamento" class="col-lg-2 control-label" value="Agendamento" />
+					<div class="col-lg-8">
+						<h:selectOneMenu id="selectAgendamento" value="#{participanteBean.participante.agendamento}" converter="AgendamentoConverter">
+							<f:selectItems value="#{agendamentoBean.agendamentos}" var="agendamento" itemValue="#{agendamento}" itemLabel="#{agendamento.data}" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="selectDiscente" class="col-lg-2 control-label" value="Discente" />
+					<div class="col-lg-8">
+						<h:selectOneMenu id="selectDiscente" value="#{participanteBean.participante.discente}" converter="DiscenteConverter">
+							<f:selectItems value="#{discenteBean.discentes}" var="discente" itemValue="#{discente}" itemLabel="#{discente.pessoa.nome}" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="selectSituacao" class="col-lg-2 control-label" value="Situação" />
+					<div class="col-lg-8">
+						<h:selectOneMenu class="form-control" id="selectSituacao" value="#{participanteBean.participante.situacao}">
+							<f:selectItem itemLabel="Presente" itemValue="Presente"></f:selectItem>
+							<f:selectItem itemLabel="Ausente" itemValue="Ausente"></f:selectItem>
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-10 col-lg-offset-2">
+						<h:commandLink id="cancelParticipante" type="button" class="btn btn-default" action="#{participanteBean.cancel}">
+							<h:outputText value="Cancelar" />
+						</h:commandLink>
+						<h:commandLink id="createParticipante" type="button" class="btn btn-primary" action="#{participanteBean.createParticipante}">
+							<h:outputText value="Cadastrar" />
+						</h:commandLink>
+					</div>
+				</div>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

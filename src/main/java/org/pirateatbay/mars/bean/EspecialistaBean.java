@@ -79,7 +79,7 @@ public class EspecialistaBean implements Serializable {
 	}
 	
 	public String cancel() {
-		return "index.xhtml?faces-redirect=true";
+		return "/secured/index.xhtml?faces-redirect=true";
 	}
 
 }

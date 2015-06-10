@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="content">
+		<h:form class="form-horizontal">
+			<fieldset>
+				<legend>Cadastrar Agendamento</legend>
+				<div class="form-group">
+					<h:outputLabel for="selectEspecialista" class="col-lg-2 control-label" value="Especialista" />
+					<div class="col-lg-8">
+						<h:selectOneMenu id="selectEspecialista" value="#{agendamentoBean.agendamento.especialista}" converter="EspecialistaConverter">
+							<f:selectItems value="#{especialistaBean.especialistas}" var="especialista" itemValue="#{especialista}" itemLabel="#{especialista.pessoa.nome}" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputData" class="col-lg-2 control-label" value="Data" />
+					<div class="col-lg-8">
+						<p:calendar id="inputData" value="#{agendamentoBean.agendamento.data}" pattern="dd/MM/yyyy" mask="true" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputHorario" class="col-lg-2 control-label" value="Horário" />
+					<div class="col-lg-8">
+						<h:inputText class="form-control" id="inputHorario" value="#{agendamentoBean.agendamento.horario}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="selectTipo" class="col-lg-2 control-label" value="Tipo" />
+					<div class="col-lg-8">
+						<h:selectOneMenu class="form-control" id="selectTipo" value="#{agendamentoBean.agendamento.tipo}">
+							<f:selectItem itemLabel="Plantão Pedagógico" itemValue="Plantão Pedagógico"></f:selectItem>
+							<f:selectItem itemLabel="Apoio Psicológico" itemValue="Apoio Psicológico"></f:selectItem>
+							<f:selectItem itemLabel="Assistência Social" itemValue="Assistência Social"></f:selectItem>
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="inputObservacao" class="col-lg-2 control-label" value="Observação" />
+					<div class="col-lg-8">
+						<h:inputTextarea class="form-control" id="inputObservacao" value="#{agendamentoBean.agendamento.observacao}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-10 col-lg-offset-2">
+						<h:commandLink id="cancelAgendamento" type="button" class="btn btn-default" action="#{agendamentoBean.cancel}">
+							<h:outputText value="Cancelar" />
+						</h:commandLink>
+						<h:commandLink id="createAgendamento" type="button" class="btn btn-primary" action="#{agendamentoBean.createAgendamento}">
+							<h:outputText value="Cadastrar" />
+						</h:commandLink>
+					</div>
+				</div>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>
